@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PlombiDZ</string>
+
+    <string name="nav_home">Accueil</string>
+    <string name="nav_sizing">Diamètres</string>
+    <string name="nav_tank">Réservoir</string>
+    <string name="nav_pressure">Pression</string>
+    <string name="nav_clients">Clients</string>
+    <string name="nav_jobs">Fiches</string>
+
+    <string name="home_title">PlombiDZ</string>
+    <string name="home_sub">Boîte à outils du plombier — 100 % hors ligne</string>
+    <string name="home_go_sizing">Guider un diamètre de tuyau</string>
+    <string name="home_go_sizing_d">Débit probable (DTU 60.11), PER / multicouche / cuivre</string>
+    <string name="home_go_tank">Réservoir d\'eau (bâche / château)</string>
+    <string name="home_go_tank_d">Volume selon personnes et jours d\'autonomie</string>
+    <string name="home_go_pressure">Pression &amp; notes</string>
+    <string name="home_go_pressure_d">Pression statique, réducteur, minimums par appareil</string>
+    <string name="home_go_clients">Registre clients</string>
+    <string name="home_go_clients_d">Noms, téléphones, adresses — sur l\'appareil</string>
+    <string name="home_go_jobs">Fiches d\'intervention</string>
+    <string name="home_go_jobs_d">Fiches + partage PDF, sans compte</string>
+
+    <string name="sizing_title">Diamètre de tuyau</string>
+    <string name="sizing_material">Matériau du tube</string>
+    <string name="mat_per">PER</string>
+    <string name="mat_multi">Multicouche</string>
+    <string name="mat_copper">Cuivre</string>
+    <string name="sizing_length">Longueur du tronçon (m)</string>
+    <string name="sizing_clear">Effacer</string>
+    <string name="sizing_total_flow">Débit brut total</string>
+    <string name="sizing_simult">Coefficient de simultanéité</string>
+    <string name="sizing_prob_flow">Débit probable</string>
+    <string name="sizing_reco">Diamètre conseillé (ext.)</string>
+    <string name="sizing_velocity">Vitesse dans le tube</string>
+    <string name="sizing_warn_length">Tronçon long : monté d\'une taille pour limiter les pertes de charge.</string>
+    <string name="sizing_note">Guide basé sur NF DTU 60.11 (débits de base, y = 0,8/√(x−1)). Ne remplace pas une étude de bureau.</string>
+    <string name="flow_unit">L/s</string>
+
+    <string name="fixture_sink">Évier</string>
+    <string name="fixture_basin">Lavabo</string>
+    <string name="fixture_shower">Douche</string>
+    <string name="fixture_bath">Baignoire</string>
+    <string name="fixture_wc">WC réservoir</string>
+    <string name="fixture_washer">Machine à laver</string>
+    <string name="fixture_tap12">Robinet 1/2</string>
+    <string name="fixture_tap34">Robinet 3/4</string>
+
+    <string name="tank_title">Réservoir d\'eau</string>
+    <string name="tank_persons">Personnes desservies</string>
+    <string name="tank_days">Jours d\'autonomie</string>
+    <string name="tank_use_l">Besoin (L / pers. / jour)</string>
+    <string name="tank_result">Volume utile conseillé</string>
+    <string name="tank_note">Repère courant en Algérie : coupures ADE, bâche au sol + réservoir terrasse avec surpresseur ou gravitaire. Prévoir trop-plein, vidange et couvercle anti-poussière.</string>
+    <string name="tank_height">Hauteur réservoir → point le plus haut (m)</string>
+    <string name="tank_pressure_result">Pression gravitaire ≈</string>
+
+    <string name="press_title">Pression</string>
+    <string name="press_height">Hauteur d\'eau au-dessus du point (m)</string>
+    <string name="press_result_static">Pression statique ≈</string>
+    <string name="press_result_min">Minimum conseillé au point le plus défavorisé : 1 bar (collectif).</string>
+    <string name="press_note">Repères : 10 m d\'eau ≈ 1 bar. Au-delà de ~3 bars au robinet, prévoir un réducteur de pression. Vitesses usuelles : 1,5 m/s en colonne, 2 m/s maxi.</string>
+
+    <string name="clients_title">Clients</string>
+    <string name="clients_add">Ajouter un client</string>
+    <string name="client_name">Nom</string>
+    <string name="client_phone">Téléphone</string>
+    <string name="client_address">Adresse / commune</string>
+    <string name="client_notes">Notes</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="delete">Supprimer</string>
+    <string name="empty_clients">Aucun client. Ajoutez votre premier client.</string>
+
+    <string name="jobs_title">Interventions</string>
+    <string name="jobs_add">Nouvelle fiche</string>
+    <string name="job_client">Client</string>
+    <string name="job_date">Date</string>
+    <string name="job_desc">Travail réalisé</string>
+    <string name="job_materials">Matériel / pièces</string>
+    <string name="job_price">Montant (DA)</string>
+    <string name="job_status">Statut</string>
+    <string name="status_open">En cours</string>
+    <string name="status_done">Terminée</string>
+    <string name="job_share_pdf">Partager PDF</string>
+    <string name="empty_jobs">Aucune fiche. Créez votre première intervention.</string>
+    <string name="no_client">— Sans client —</string>
+
+    <string name="lang_title">Langue / اللغة</string>
+    <string name="lang_fr">Français</string>
+    <string name="lang_ar">العربية</string>
+    <string name="disclaimer">Données sur l\'appareil uniquement. Aucun compte, aucune connexion.</string>
+</resources>

@@ -1,0 +1,164 @@
+package dz.plombidz.app
+
+import android.content.Context
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import dz.plombidz.app.data.PlombiViewModel
+import dz.plombidz.app.ui.ClientsScreen
+import dz.plombidz.app.ui.JobsScreen
+import dz.plombidz.app.ui.PressureScreen
+import dz.plombidz.app.ui.SizingScreen
+import dz.plombidz.app.ui.TankScreen
+import dz.plombidz.app.util.LocaleHelper
+
+class MainActivity : ComponentActivity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.apply(newBase))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme(
+                colorScheme = lightColorScheme(
+                    primary = Color(0xFF0B6FA4),
+                    secondary = Color(0xFF00A0B0),
+                )
+            ) {
+                PlombiNav(onSwitchLang = { lang ->
+                    LocaleHelper.set(this, lang)
+                    recreate()
+                })
+            }
+        }
+    }
+}
+
+@Composable
+fun PlombiNav(onSwitchLang: (String) -> Unit) {
+    val nav = rememberNavController()
+    val vm: PlombiViewModel = viewModel()
+    val backStack = nav.currentBackStackEntryAsState().value
+    val route = backStack?.destination?.route ?: "home"
+    Column(Modifier.fillMaxSize()) {
+        NavHost(nav, startDestination = "home", modifier = Modifier.weight(1f)) {
+            composable("home") { HomeScreen(nav, onSwitchLang) }
+            composable("sizing") { SizingScreen() }
+            composable("tank") { TankScreen() }
+            composable("pressure") { PressureScreen() }
+            composable("clients") { ClientsScreen(vm) }
+            composable("jobs") { JobsScreen(vm) }
+        }
+        BottomTabs(nav, route)
+    }
+}
+
+@Composable
+fun BottomTabs(nav: NavHostController, route: String) {
+    val tabs = listOf(
+        "home" to R.string.nav_home,
+        "sizing" to R.string.nav_sizing,
+        "clients" to R.string.nav_clients,
+        "jobs" to R.string.nav_jobs,
+    )
+    NavigationBar {
+        tabs.forEach { (r, label) ->
+            NavigationBarItem(
+                selected = route == r,
+                onClick = { if (route != r) nav.navigate(r) },
+                icon = {
+                    Icon(
+                        when (r) {
+                            "home" -> Icons.Default.Home
+                            "sizing" -> Icons.Default.Build
+                            "clients" -> Icons.Default.Person
+                            else -> Icons.Default.Build
+                        },
+                        contentDescription = null,
+                    )
+                },
+                label = { Text(stringResource(label)) },
+            )
+        }
+    }
+}
+
+@Composable
+fun HomeScreen(nav: NavHostController, onSwitchLang: (String) -> Unit) {
+    val cards = listOf(
+        "sizing" to Pair(R.string.home_go_sizing, R.string.home_go_sizing_d),
+        "tank" to Pair(R.string.home_go_tank, R.string.home_go_tank_d),
+        "pressure" to Pair(R.string.home_go_pressure, R.string.home_go_pressure_d),
+        "clients" to Pair(R.string.home_go_clients, R.string.home_go_clients_d),
+        "jobs" to Pair(R.string.home_go_jobs, R.string.home_go_jobs_d),
+    )
+    Column(
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp)
+    ) {
+        Text(stringResource(R.string.home_title), style = MaterialTheme.typography.headlineMedium)
+        Text(stringResource(R.string.home_sub), style = MaterialTheme.typography.bodyMedium)
+        Spacer(Modifier.height(12.dp))
+        cards.forEach { (r, texts) ->
+            Card(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)
+                    .clickable { nav.navigate(r) }
+            ) {
+                Column(Modifier.padding(12.dp)) {
+                    Text(stringResource(texts.first), style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(texts.second), style = MaterialTheme.typography.bodySmall)
+                }
+            }
+        }
+        Spacer(Modifier.height(12.dp))
+        Text(stringResource(R.string.lang_title), style = MaterialTheme.typography.titleSmall)
+        Row {
+            Button(onClick = { onSwitchLang("fr") }, modifier = Modifier.padding(end = 8.dp)) {
+                Text(stringResource(R.string.lang_fr))
+            }
+            Button(onClick = { onSwitchLang("ar") }) {
+                Text(stringResource(R.string.lang_ar))
+            }
+        }
+        Spacer(Modifier.height(8.dp))
+        Text(stringResource(R.string.disclaimer), style = MaterialTheme.typography.bodySmall)
+    }
+}

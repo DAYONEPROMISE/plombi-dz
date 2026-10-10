@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PlombiDZ</string>
+
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_sizing">الأقطار</string>
+    <string name="nav_tank">الخزان</string>
+    <string name="nav_pressure">الضغط</string>
+    <string name="nav_clients">الزبائن</string>
+    <string name="nav_jobs">التدخلات</string>
+
+    <string name="home_title">PlombiDZ</string>
+    <string name="home_sub">عدة السباك — تعمل دون إنترنت</string>
+    <string name="home_go_sizing">توجيه قطر الأنبوب</string>
+    <string name="home_go_sizing_d">التدفق المحتمل (DTU 60.11)، PER / متعدد الطبقات / نحاس</string>
+    <string name="home_go_tank">خزان الماء (باش / صهريج)</string>
+    <string name="home_go_tank_d">الحجم حسب الأشخاص وأيام الاستقلالية</string>
+    <string name="home_go_pressure">الضغط وملاحظات</string>
+    <string name="home_go_pressure_d">الضغط الساكن، المخفض، الحدود الدنيا لكل جهاز</string>
+    <string name="home_go_clients">سجل الزبائن</string>
+    <string name="home_go_clients_d">الأسماء والهواتف والعناوين — على الجهاز</string>
+    <string name="home_go_jobs">بطاقات التدخل</string>
+    <string name="home_go_jobs_d">بطاقات + مشاركة PDF، دون حساب</string>
+
+    <string name="sizing_title">قطر الأنبوب</string>
+    <string name="sizing_material">مادة الأنبوب</string>
+    <string name="mat_per">PER</string>
+    <string name="mat_multi">متعدد الطبقات</string>
+    <string name="mat_copper">نحاس</string>
+    <string name="sizing_length">طول المقطع (م)</string>
+    <string name="sizing_clear">مسح</string>
+    <string name="sizing_total_flow">التدفق الخام الإجمالي</string>
+    <string name="sizing_simult">معامل التزامن</string>
+    <string name="sizing_prob_flow">التدفق المحتمل</string>
+    <string name="sizing_reco">القطر الموصى به (خارجي)</string>
+    <string name="sizing_velocity">السرعة داخل الأنبوب</string>
+    <string name="sizing_warn_length">مقطع طويل: تمت زيادة المقاس للحد من فقدان الضغط.</string>
+    <string name="sizing_note">دليل مبني على NF DTU 60.11 (التدفقات الأساسية، y = 0,8/√(x−1)). لا يغني عن دراسة مكتبية.</string>
+    <string name="flow_unit">ل/ثا</string>
+
+    <string name="fixture_sink">حوض المطبخ</string>
+    <string name="fixture_basin">مغسلة</string>
+    <string name="fixture_shower">دش</string>
+    <string name="fixture_bath">حوض الاستحمام</string>
+    <string name="fixture_wc">مرحاض بخزان</string>
+    <string name="fixture_washer">غسالة</string>
+    <string name="fixture_tap12">صنبور 1/2</string>
+    <string name="fixture_tap34">صنبور 3/4</string>
+
+    <string name="tank_title">خزان الماء</string>
+    <string name="tank_persons">عدد الأشخاص</string>
+    <string name="tank_days">أيام الاستقلالية</string>
+    <string name="tank_use_l">الاحتياج (لتر / شخص / يوم)</string>
+    <string name="tank_result">الحجم المفيد الموصى به</string>
+    <string name="tank_note">المعتاد في الجزائر: انقطاعات ADE، باش أرضي + خزان سطحي مع مضخة أو بالجاذبية. وفّر فائضًا وتصريفًا وغطاء ضد الغبار.</string>
+    <string name="tank_height">الارتفاع من الخزان إلى أعلى نقطة (م)</string>
+    <string name="tank_pressure_result">ضغط الجاذبية ≈</string>
+
+    <string name="press_title">الضغط</string>
+    <string name="press_height">ارتفاع الماء فوق النقطة (م)</string>
+    <string name="press_result_static">الضغط الساكن ≈</string>
+    <string name="press_result_min">الحد الأدنى الموصى به عند أبعد نقطة: 1 بار (جماعي).</string>
+    <string name="press_note">مراجع: 10 م ماء ≈ 1 بار. فوق ~3 بار عند الصنبور، ركّب مخفض ضغط. السرعات المعتادة: 1,5 م/ثا في العمود، 2 م/ثا كحد أقصى.</string>
+
+    <string name="clients_title">الزبائن</string>
+    <string name="clients_add">إضافة زبون</string>
+    <string name="client_name">الاسم</string>
+    <string name="client_phone">الهاتف</string>
+    <string name="client_address">العنوان / البلدية</string>
+    <string name="client_notes">ملاحظات</string>
+    <string name="save">حفظ</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete">حذف</string>
+    <string name="empty_clients">لا يوجد زبائن. أضف أول زبون.</string>
+
+    <string name="jobs_title">التدخلات</string>
+    <string name="jobs_add">بطاقة جديدة</string>
+    <string name="job_client">الزبون</string>
+    <string name="job_date">التاريخ</string>
+    <string name="job_desc">العمل المنجز</string>
+    <string name="job_materials">المواد / القطع</string>
+    <string name="job_price">المبلغ (دج)</string>
+    <string name="job_status">الحالة</string>
+    <string name="status_open">جارية</string>
+    <string name="status_done">منتهية</string>
+    <string name="job_share_pdf">مشاركة PDF</string>
+    <string name="empty_jobs">لا توجد بطاقات. أنشئ أول تدخل.</string>
+    <string name="no_client">— دون زبون —</string>
+
+    <string name="lang_title">Langue / اللغة</string>
+    <string name="lang_fr">Français</string>
+    <string name="lang_ar">العربية</string>
+    <string name="disclaimer">البيانات على الجهاز فقط. لا حساب ولا اتصال.</string>
+</resources>
