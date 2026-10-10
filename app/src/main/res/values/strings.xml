@@ -10,7 +10,7 @@
     <string name="nav_jobs">Fiches</string>
 
     <string name="home_title">PlombiDZ</string>
-    <string name="home_sub">Boîte à outils du plombier — 100 % hors ligne</string>
+    <string name="home_sub">Boîte à outils du plombier — 100 %% hors ligne</string>
     <string name="home_go_sizing">Guider un diamètre de tuyau</string>
     <string name="home_go_sizing_d">Débit probable (DTU 60.11), PER / multicouche / cuivre</string>
     <string name="home_go_tank">Réservoir d\'eau (bâche / château)</string>
