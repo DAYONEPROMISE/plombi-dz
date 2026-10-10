@@ -14,7 +14,7 @@ object FichePdf {
 
     fun build(context: Context, job: Intervention): File {
         val doc = PdfDocument()
-        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).build() // A4 points
+        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create() // A4 points
         val page = doc.startPage(pageInfo)
         val c = page.canvas
         val title = Paint().apply { textSize = 22f; isFakeBoldText = true }
