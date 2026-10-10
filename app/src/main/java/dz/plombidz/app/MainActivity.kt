@@ -4,10 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,11 +27,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -40,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import dz.plombidz.app.data.PlombiViewModel
 import dz.plombidz.app.ui.ClientsScreen
 import dz.plombidz.app.ui.JobsScreen
+import dz.plombidz.app.ui.PlombiTheme
 import dz.plombidz.app.ui.PressureScreen
 import dz.plombidz.app.ui.SizingScreen
 import dz.plombidz.app.ui.TankScreen
@@ -52,13 +55,9 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            MaterialTheme(
-                colorScheme = lightColorScheme(
-                    primary = Color(0xFF0B6FA4),
-                    secondary = Color(0xFF00A0B0),
-                )
-            ) {
+            PlombiTheme {
                 PlombiNav(onSwitchLang = { lang ->
                     LocaleHelper.set(this, lang)
                     recreate()
@@ -74,8 +73,15 @@ fun PlombiNav(onSwitchLang: (String) -> Unit) {
     val vm: PlombiViewModel = viewModel()
     val backStack = nav.currentBackStackEntryAsState().value
     val route = backStack?.destination?.route ?: "home"
-    Column(Modifier.fillMaxSize()) {
-        NavHost(nav, startDestination = "home", modifier = Modifier.weight(1f)) {
+    Scaffold(bottomBar = { BottomTabs(nav, route) }) { inner ->
+        NavHost(
+            nav,
+            startDestination = "home",
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(inner)
+                .consumeWindowInsets(inner),
+        ) {
             composable("home") { HomeScreen(nav, onSwitchLang) }
             composable("sizing") { SizingScreen() }
             composable("tank") { TankScreen() }
@@ -83,7 +89,6 @@ fun PlombiNav(onSwitchLang: (String) -> Unit) {
             composable("clients") { ClientsScreen(vm) }
             composable("jobs") { JobsScreen(vm) }
         }
-        BottomTabs(nav, route)
     }
 }
 
@@ -108,7 +113,7 @@ fun BottomTabs(nav: NavHostController, route: String) {
                             "clients" -> Icons.Default.Person
                             else -> Icons.Default.Build
                         },
-                        contentDescription = null,
+                        contentDescription = stringResource(label),
                     )
                 },
                 label = { Text(stringResource(label)) },
@@ -150,8 +155,8 @@ fun HomeScreen(nav: NavHostController, onSwitchLang: (String) -> Unit) {
         }
         Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.lang_title), style = MaterialTheme.typography.titleSmall)
-        Row {
-            Button(onClick = { onSwitchLang("fr") }, modifier = Modifier.padding(end = 8.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Button(onClick = { onSwitchLang("fr") }) {
                 Text(stringResource(R.string.lang_fr))
             }
             Button(onClick = { onSwitchLang("ar") }) {
