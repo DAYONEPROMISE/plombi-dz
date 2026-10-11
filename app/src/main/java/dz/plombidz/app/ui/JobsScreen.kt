@@ -41,7 +41,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -135,4 +134,72 @@ fun JobsScreen(vm: PlombiViewModel) {
             },
         )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun JobDialog(
+    clientNames: List<String>,
+    onDismiss: () -> Unit,
+    onSave: (Intervention) -> Unit,
+) {
+    var client by remember { mutableStateOf("") }
+    var desc by remember { mutableStateOf("") }
+    var materials by remember { mutableStateOf("") }
+    var price by remember { mutableStateOf("") }
+    var done by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.jobs_add)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
+                    TextField(
+                        value = client,
+                        onValueChange = { client = it },
+                        label = { Text(stringResource(R.string.job_client)) },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
+                        modifier = Modifier.menuAnchor().fillMaxWidth(),
+                        singleLine = true,
+                    )
+                    ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        clientNames.forEach { name ->
+                            DropdownMenuItem(
+                                text = { Text(name) },
+                                onClick = { client = name; expanded = false },
+                            )
+                        }
+                    }
+                }
+                TextField(desc, { desc = it }, label = { Text(stringResource(R.string.job_desc)) })
+                TextField(materials, { materials = it }, label = { Text(stringResource(R.string.job_materials)) })
+                TextField(
+                    price, { price = it.filter(Char::isDigit) },
+                    label = { Text(stringResource(R.string.job_price)) },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Checkbox(done, { done = it })
+                    Text(stringResource(R.string.status_done))
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                onSave(
+                    Intervention(
+                        clientName = client.trim(),
+                        description = desc.trim(),
+                        materials = materials.trim(),
+                        priceDa = price.toLongOrNull() ?: 0L,
+                        done = done,
+                    )
+                )
+            }) { Text(stringResource(R.string.save)) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
 }
