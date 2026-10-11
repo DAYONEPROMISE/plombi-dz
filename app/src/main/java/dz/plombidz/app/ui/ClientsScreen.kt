@@ -46,7 +46,7 @@ fun ClientsScreen(vm: PlombiViewModel) {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { showDialog = true }) {
-                Icon(Icons.Default.Add, contentDescription = null)
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.clients_add))
             }
         }
     ) { pad ->
@@ -66,7 +66,7 @@ fun ClientsScreen(vm: PlombiViewModel) {
                                     if (c.address.isNotBlank()) Text(c.address, style = MaterialTheme.typography.bodySmall)
                                 }
                                 IconButton(onClick = { vm.removeClient(c) }) {
-                                    Icon(Icons.Default.Delete, contentDescription = null)
+                                    Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.delete))
                                 }
                             }
                         }
