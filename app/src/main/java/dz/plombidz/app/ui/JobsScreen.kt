@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Assignment
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
@@ -69,10 +70,13 @@ fun JobsScreen(vm: PlombiViewModel) {
         }
     ) { pad ->
         Column(Modifier.fillMaxSize().padding(pad).padding(16.dp)) {
-            Text(stringResource(R.string.jobs_title), style = MaterialTheme.typography.headlineSmall)
             Spacer(Modifier.height(8.dp))
             if (jobs.isEmpty()) {
-                Text(stringResource(R.string.empty_jobs))
+                PlombiEmptyState(
+                    icon = Icons.Default.Assignment,
+                    title = stringResource(R.string.empty_jobs_title),
+                    hint = stringResource(R.string.empty_jobs_hint)
+                )
             } else {
                 LazyColumn {
                     items(jobs, key = { it.id }) { j ->

@@ -51,10 +51,13 @@ fun ClientsScreen(vm: PlombiViewModel) {
         }
     ) { pad ->
         Column(Modifier.fillMaxSize().padding(pad).padding(16.dp)) {
-            Text(stringResource(R.string.clients_title), style = MaterialTheme.typography.headlineSmall)
             Spacer(Modifier.height(8.dp))
             if (clients.isEmpty()) {
-                Text(stringResource(R.string.empty_clients))
+                PlombiEmptyState(
+                    icon = Icons.Default.Person,
+                    title = stringResource(R.string.empty_clients_title),
+                    hint = stringResource(R.string.empty_clients_hint)
+                )
             } else {
                 LazyColumn {
                     items(clients, key = { it.id }) { c ->

@@ -9,8 +9,9 @@
     <string name="nav_clients">Clients</string>
     <string name="nav_jobs">Fiches</string>
 
+    <string name="tools_section">Outils</string>
     <string name="home_title">PlombiDZ</string>
-    <string name="home_sub">Boîte à outils du plombier — 100 %% hors ligne</string>
+    <string name="home_sub" formatted="false">Boîte à outils du plombier — 100 % hors ligne</string>
     <string name="home_go_sizing">Guider un diamètre de tuyau</string>
     <string name="home_go_sizing_d">Débit probable (DTU 60.11), PER / multicouche / cuivre</string>
     <string name="home_go_tank">Réservoir d\'eau (bâche / château)</string>
@@ -35,6 +36,7 @@
     <string name="sizing_reco">Diamètre conseillé (ext.)</string>
     <string name="sizing_velocity">Vitesse dans le tube</string>
     <string name="sizing_warn_length">Tronçon long : monté d\'une taille pour limiter les pertes de charge.</string>
+    <string name="sizing_over_velocity">Vitesse au-delà de 2,0 m/s : prévoir un diamètre supérieur.</string>
     <string name="sizing_note">Guide basé sur NF DTU 60.11 (débits de base, y = 0,8/√(x−1)). Ne remplace pas une étude de bureau.</string>
     <string name="flow_unit">L/s</string>
 
@@ -72,6 +74,8 @@
     <string name="cancel">Annuler</string>
     <string name="delete">Supprimer</string>
     <string name="empty_clients">Aucun client. Ajoutez votre premier client.</string>
+    <string name="empty_clients_title">Aucun client</string>
+    <string name="empty_clients_hint">Ajoutez votre premier client avec le bouton +.</string>
 
     <string name="jobs_title">Interventions</string>
     <string name="jobs_add">Nouvelle fiche</string>
@@ -85,6 +89,8 @@
     <string name="status_done">Terminée</string>
     <string name="job_share_pdf">Partager PDF</string>
     <string name="empty_jobs">Aucune fiche. Créez votre première intervention.</string>
+    <string name="empty_jobs_title">Aucune fiche</string>
+    <string name="empty_jobs_hint">Créez votre première intervention avec le bouton +.</string>
     <string name="no_client">— Sans client —</string>
 
     <string name="lang_title">Langue / اللغة</string>

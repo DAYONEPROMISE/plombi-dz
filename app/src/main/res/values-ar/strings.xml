@@ -9,8 +9,9 @@
     <string name="nav_clients">الزبائن</string>
     <string name="nav_jobs">التدخلات</string>
 
+    <string name="tools_section">الأدوات</string>
     <string name="home_title">PlombiDZ</string>
-    <string name="home_sub">عدة السباك — تعمل دون إنترنت</string>
+    <string name="home_sub" formatted="false">عدة السباك — تعمل دون إنترنت</string>
     <string name="home_go_sizing">توجيه قطر الأنبوب</string>
     <string name="home_go_sizing_d">التدفق المحتمل (DTU 60.11)، PER / متعدد الطبقات / نحاس</string>
     <string name="home_go_tank">خزان الماء (باش / صهريج)</string>
@@ -35,6 +36,7 @@
     <string name="sizing_reco">القطر الموصى به (خارجي)</string>
     <string name="sizing_velocity">السرعة داخل الأنبوب</string>
     <string name="sizing_warn_length">مقطع طويل: تمت زيادة المقاس للحد من فقدان الضغط.</string>
+    <string name="sizing_over_velocity">السرعة تتجاوز 2,0 م/ث: اختر قطرًا أكبر.</string>
     <string name="sizing_note">دليل مبني على NF DTU 60.11 (التدفقات الأساسية، y = 0,8/√(x−1)). لا يغني عن دراسة مكتبية.</string>
     <string name="flow_unit">ل/ثا</string>
 
@@ -72,6 +74,8 @@
     <string name="cancel">إلغاء</string>
     <string name="delete">حذف</string>
     <string name="empty_clients">لا يوجد زبائن. أضف أول زبون.</string>
+    <string name="empty_clients_title">لا يوجد عميل</string>
+    <string name="empty_clients_hint">أضف أول عميل عبر زر +.</string>
 
     <string name="jobs_title">التدخلات</string>
     <string name="jobs_add">بطاقة جديدة</string>
@@ -85,6 +89,8 @@
     <string name="status_done">منتهية</string>
     <string name="job_share_pdf">مشاركة PDF</string>
     <string name="empty_jobs">لا توجد بطاقات. أنشئ أول تدخل.</string>
+    <string name="empty_jobs_title">لا توجد بطاقة</string>
+    <string name="empty_jobs_hint">أنشئ أول تدخل عبر زر +.</string>
     <string name="no_client">— دون زبون —</string>
 
     <string name="lang_title">Langue / اللغة</string>

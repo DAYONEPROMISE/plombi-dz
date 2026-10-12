@@ -61,7 +61,6 @@ fun TankScreen() {
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
     ) {
-        Text(stringResource(R.string.tank_title), style = MaterialTheme.typography.headlineSmall)
         NumRow(stringResource(R.string.tank_persons), persons) { persons = it }
         NumRow(stringResource(R.string.tank_days), days) { days = it }
         NumRow(stringResource(R.string.tank_use_l), litres) { litres = it }
@@ -94,7 +93,6 @@ fun PressureScreen() {
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
     ) {
-        Text(stringResource(R.string.press_title), style = MaterialTheme.typography.headlineSmall)
         NumRow(stringResource(R.string.press_height), height) { height = it }
         Spacer(Modifier.height(8.dp))
         Card(Modifier.fillMaxWidth()) {

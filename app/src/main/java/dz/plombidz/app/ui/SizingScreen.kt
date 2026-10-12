@@ -1,5 +1,6 @@
 package dz.plombidz.app.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
@@ -68,7 +70,6 @@ fun SizingScreen() {
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
-        Text(stringResource(R.string.sizing_title), style = MaterialTheme.typography.headlineSmall)
         Spacer(Modifier.height(8.dp))
         Fixture.entries.forEach { f ->
             val c = counts[f] ?: 0
@@ -105,8 +106,32 @@ fun SizingScreen() {
         Spacer(Modifier.height(4.dp))
         Button(onClick = { counts.clear() }) { Text(stringResource(R.string.sizing_clear)) }
         Spacer(Modifier.height(8.dp))
+        Card(
+            Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+        ) {
+            Column(
+                Modifier.fillMaxWidth().padding(20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(2.dp)
+            ) {
+                Text(
+                    stringResource(R.string.sizing_reco).uppercase(),
+                    style = MaterialTheme.typography.labelMedium
+                )
+                Text("Ø${result.outerMm} mm", style = MaterialTheme.typography.displaySmall)
+                Text(
+                    "${stringResource(R.string.sizing_velocity)} : ${fmt(result.velocityMs)} m/s",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        }
+        Spacer(Modifier.height(8.dp))
         Card(Modifier.fillMaxWidth()) {
-            Column(Modifier.padding(12.dp)) {
+            Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(
                     "${stringResource(R.string.sizing_total_flow)} : ${fmt(result.rawFlowLs)} ${stringResource(R.string.flow_unit)}"
                 )
@@ -114,16 +139,11 @@ fun SizingScreen() {
                 Text(
                     "${stringResource(R.string.sizing_prob_flow)} : ${fmt(result.probableFlowLs)} ${stringResource(R.string.flow_unit)}"
                 )
-                Text(
-                    "${stringResource(R.string.sizing_reco)} : Ø${result.outerMm} mm",
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text("${stringResource(R.string.sizing_velocity)} : ${fmt(result.velocityMs)} m/s")
                 if (result.upsizedForLength) {
-                    Text(stringResource(R.string.sizing_warn_length), color = MaterialTheme.colorScheme.primary)
+                    Text(stringResource(R.string.sizing_warn_length), color = MaterialTheme.colorScheme.error)
                 }
                 if (result.overVelocity) {
-                    Text("⚠ > 2,0 m/s", color = MaterialTheme.colorScheme.error)
+                    Text(stringResource(R.string.sizing_over_velocity), color = MaterialTheme.colorScheme.error)
                 }
             }
         }
